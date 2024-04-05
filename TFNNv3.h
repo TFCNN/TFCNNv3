@@ -279,7 +279,7 @@ static inline f32 urandf() // 0 to 1
 #else
     static const f32 FLOAT_UINT64_MAX = 1.f/(f32)UINT64_MAX;
     int f = open("/dev/urandom", O_RDONLY | O_CLOEXEC), uint64_t s;
-    read(f, &s, sizeof(uint64_t));
+    ssize_t result = read(f, &s, sizeof(uint64_t)); // suppress compiler warning with unused result
     close(f);
     return ((f32)s) * FLOAT_UINT64_MAX;
 #endif
@@ -295,7 +295,7 @@ static inline f32 urandfc() // -1 to 1
 #else
     static const f32 FLOAT_UINT64_MAX_HALF = 1.f/(f32)(UINT64_MAX/2);
     int f = open("/dev/urandom", O_RDONLY | O_CLOEXEC), uint64_t s;
-    read(f, &s, sizeof(uint64_t));
+    ssize_t result = read(f, &s, sizeof(uint64_t)); // suppress compiler warning with unused result
     close(f);
     return (((f32)s) * FLOAT_UINT64_MAX_HALF) - 1.f;
 #endif
