@@ -215,7 +215,7 @@ int main()
             epoch_seconds++;
             lt = time(0)+1;
         }
-        printf("EPS: %u %lu\n\n", epochs_per_second/epoch_seconds, mt);
+        printf("EPS: %u\n\n", epochs_per_second/epoch_seconds);
 #endif
     }
 
