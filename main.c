@@ -207,7 +207,7 @@ int main()
             lt = microtime()+1000000;
         }
         printf("EPS: %u\n\n", epochs_per_second/epoch_seconds); // epochs per second
-#elif
+#else
         epochs_per_second++;
         static time_t lt = 0;
         if(time(0) > lt)
